@@ -1,14 +1,14 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid'; // Import the UUID library
 import Ingredients from './Ingredients';
 
 export default function Form() {
   const [ingredients, setIngredients] = useState([]);
-  const inputRef = useRef(); // Reference to the input field
 
   function handleSubmit(e) {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
+    const ingredientInput = e.currentTarget
+    const formData = new FormData(ingredientInput);
     const ingredient = formData.get('ingredient');
 
     // Create a new ingredient object with a unique ID
@@ -20,7 +20,7 @@ export default function Form() {
     setIngredients(prevIngredients => [...prevIngredients, newIngredient]);
 
     // Reset the input field using the ref
-    inputRef.current.value = '';
+    ingredientInput.reset();
   }
 
   return (
@@ -34,7 +34,6 @@ export default function Form() {
             aria-label="Add an ingredient"
             placeholder="e.g oregano"
             name="ingredient"
-            ref={inputRef} // Attach the ref to the input field
           />
           <button
             type="submit"
