@@ -16,7 +16,7 @@ function App() {
   // });
 
   return (
-    <main>
+    <main className='h-full'>
       <Header />
       {/* <section className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-10 py-28 gap-8'>
         {entries}

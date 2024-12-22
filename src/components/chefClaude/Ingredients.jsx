@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { X, Check } from 'lucide-react';
+import Recipe from './Recipe';
 
 export default function Ingredients({ ingredients, removeIngredient }) {
   const [showConfirmation, setShowConfirmation] = useState({}); // Store confirmation state per ingredient
+  const [showRecipe, setShowRecipe] = useState(false);
 
   const toggleConfirmation = (id) => {
     setShowConfirmation((prev) => ({
@@ -50,8 +52,14 @@ export default function Ingredients({ ingredients, removeIngredient }) {
             <h2 className='font-bold text-lg'>Ready for a recipe?</h2>
             <p>Generate a recipe from your list of ingredients.</p>
         </section>
-        <button className='bg-orange-600 text-gray-50 font-bold text-nowrap py-2 px-4 rounded-md'>Get a recipe</button>
+        <button 
+        className='bg-orange-600 text-gray-50 font-bold text-nowrap py-2 px-4 rounded-md'
+        onClick={() => setShowRecipe(true)}
+        >
+            Get a recipe
+        </button>
       </section>
+        {showRecipe && <Recipe />}
     </section>
   );
 }

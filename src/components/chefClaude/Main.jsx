@@ -42,30 +42,31 @@ export default function Form() {
   }
 
   return (
-    <section className="flex justify-center items-start w-full bg-gray-50 h-screen py-28 px-4">
-      <section className="flex flex-col gap-8">
-        <section>
+    <section className="flex justify-center items-start w-full min-h-full bg-gray-50 py-28 px-4 md:px-32 lg:px-52 xl:px-96">
+      <section className="flex flex-col gap-8 w-full">
+        <section className='w-full'>
           <form
             action={addIngredient}
-            className="flex flex-col gap-4 md:flex-row items-center"
+            className="flex flex-col gap-4 md:flex-row items-center w-full"
           >
             <input
               type="text"
-              className="py-2 px-4 bg-white text-align-left rounded-md border-2 border-gray-200 focus:outline-gray-800 w-full md:w-1/2"
+              className="py-2 px-4 bg-white text-align-left rounded-md border-2 
+              border-gray-200 focus:outline-gray-800 w-full"
               aria-label="Add an ingredient"
               placeholder="e.g oregano"
               name="ingredient"
             />
             <button
               type="submit"
-              className="bg-gray-800 font-bold text-gray-100 py-2 px-4 rounded-md w-full md:w-auto"
+              className="bg-gray-800 font-bold text-gray-100 py-2 text-nowrap px-4 rounded-md w-full md:w-auto"
             >
               + Add ingredient
             </button>
           </form>
           {ingredientExists && (
             <p className="text-red-500 text-sm mt-2">
-              Ingredient already exists. Please add a different ingredient.
+              Ingredient is already on the list. Please add a different ingredient.
             </p>
           )}
         </section>
