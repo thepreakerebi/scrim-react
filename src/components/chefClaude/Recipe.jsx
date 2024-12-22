@@ -1,12 +1,12 @@
 export default function Recipe() {
   return (
-    <section className="mt-8">
-        <h2>Chef Claude Recommends:</h2>
-        <article className="suggested-recipe-container" aria-live="polite">
-            <p>Based on the ingredients you have available, I would recommend making a simple a delicious <strong>Beef Bolognese Pasta</strong>. Here is the recipe:</p>
-            <h3>Beef Bolognese Pasta</h3>
+    <section className="mt-8 flex flex-col gap-4">
+        <h2 className="text-2xl font-semibold">Chef Claude Recommends:</h2>
+        <article className="flex flex-col gap-4" aria-live="polite">
+            <p>Based on the ingredients you have available, I would recommend making a simple and delicious <strong>Beef Bolognese Pasta</strong>. Here is the recipe:</p>
+            <h3 className="text-xl font-semibold">Beef Bolognese Pasta</h3>
             <strong>Ingredients:</strong>
-            <ul>
+            <ul className="list-disc list-inside">
                 <li>1 lb. ground beef</li>
                 <li>1 onion, diced</li>
                 <li>3 cloves garlic, minced</li>
@@ -19,7 +19,7 @@ export default function Recipe() {
                 <li>8 oz pasta of your choice (e.g., spaghetti, penne, or linguine)</li>
             </ul>
             <strong>Instructions:</strong>
-            <ol>
+            <ol className="list-decimal list-inside">
                 <li>Bring a large pot of salted water to a boil for the pasta.</li>
                 <li>In a large skillet or Dutch oven, cook the ground beef over medium-high heat, breaking it up with a wooden spoon, until browned and cooked through, about 5-7 minutes.</li>
                 <li>Add the diced onion and minced garlic to the skillet and cook for 2-3 minutes, until the onion is translucent.</li>
