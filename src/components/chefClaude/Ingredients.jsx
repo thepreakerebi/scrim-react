@@ -45,6 +45,13 @@ export default function Ingredients({ ingredients, removeIngredient }) {
       <ul className="mt-8 list-disc text-lg font-medium w-full flex flex-col gap-4">
         {ingredientsList}
       </ul>
+      <section className='flex items-center gap-4 mt-8 p-6 bg-gray-100'>
+        <section className='flex flex-col gap-2 w-full'>
+            <h2 className='font-bold text-lg'>Ready for a recipe?</h2>
+            <p>Generate a recipe from your list of ingredients.</p>
+        </section>
+        <button className='bg-orange-600 text-gray-50 font-bold text-nowrap py-2 px-4 rounded-md'>Get a recipe</button>
+      </section>
     </section>
   );
 }
