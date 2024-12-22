@@ -6,7 +6,8 @@ export default function Form() {
   const [ingredients, setIngredients] = useState([]);
 
   function addIngredient(formData) {
-    const ingredient = formData.get('ingredient');
+    const { ingredient } = Object.fromEntries(formData)
+    // const ingredient = formData.get('ingredient');
 
     // Create a new ingredient object with a unique ID
     const newIngredient = {
