@@ -54,7 +54,7 @@ export default function Ingredients({ ingredients, removeIngredient }) {
     );
   });
 
-  const removeIngredients = () => { 
+  const removeIngredients = () => {
     ingredients.forEach((ingredient) => {
       removeIngredient(ingredient.id);
     });
@@ -62,15 +62,18 @@ export default function Ingredients({ ingredients, removeIngredient }) {
 
   return (
     <section>
-      <section className='flex items-center justify-between'>
+      <section className="flex flex-col gap-2 md:items-center md:justify-between md:flex-row">
         <h1 className="text-2xl font-bold">Ingredients on hand:</h1>
-        <button 
-        className='flex items-center gap-2 bg-gray-100 py-2 px-4 rounded-md text-red-500'
-        onClick={() => removeIngredients()}
-        >
-          <X />
-          Remove all ingredients
-        </button>
+        {/* Show "Remove all ingredients" button only if there are at least three ingredients */}
+        {ingredients.length >= 3 && (
+          <button
+            className="flex w-full md:w-auto items-center justify-center gap-2 bg-gray-100 py-2 px-4 rounded-md text-red-500"
+            onClick={() => removeIngredients()}
+          >
+            <X />
+            Remove all ingredients
+          </button>
+        )}
       </section>
       <ul className="mt-8 list-disc list-inside text-lg font-medium space-y-4">
         {ingredientsList}
