@@ -1,10 +1,20 @@
 import { useState } from 'react';
 import { X, Check } from 'lucide-react';
 import Recipe from './Recipe';
+import { getRecipeFromMistral } from './ai';
 
 export default function Ingredients({ ingredients, removeIngredient }) {
   const [showConfirmation, setShowConfirmation] = useState({}); // Store confirmation state per ingredient
-  const [showRecipe, setShowRecipe] = useState(false);
+  const [recipe, setRecipe] = useState('');
+  const [isLoading, setIsLoading] = useState(false); // Add loading state
+
+  const handleShowRecipe = async () => {
+    setIsLoading(true); // Set loading to true
+    const recipe = await getRecipeFromMistral(ingredients.map((i) => i.name));
+    console.log(recipe);
+    setRecipe(recipe);
+    setIsLoading(false); // Set loading to false after fetching
+  };
 
   const toggleConfirmation = (id) => {
     setShowConfirmation((prev) => ({
@@ -58,12 +68,18 @@ export default function Ingredients({ ingredients, removeIngredient }) {
         </section>
         <button
           className="bg-orange-600 text-gray-50 font-bold text-nowrap py-2 px-4 rounded-md"
-          onClick={() => setShowRecipe(true)}
+          onClick={handleShowRecipe}
         >
-          Get a recipe
+          {isLoading ? 'Getting recipe...' : 'Get a recipe'} {/* Update button text based on loading */}
         </button>
       </section>
-      {showRecipe && <Recipe />}
+      {
+        isLoading ? (
+          <p className="mt-4 text-orange-600 font-medium">Getting recipe...</p> // Show loading message
+        ) : (
+          recipe.length > 0 && <Recipe recipe={recipe} /> // Show recipe if available
+        )
+      }
     </section>
   );
 }

@@ -7,7 +7,8 @@ export default function Form() {
   const [ingredientExists, setIngredientExists] = useState(false);
 
   function addIngredient(formData) {
-    const { ingredient } = Object.fromEntries(formData);
+    // const { ingredient } = Object.fromEntries(formData);
+    const ingredient = formData.get('ingredient');
 
     // Check if the ingredient already exists
     const exists = ingredients.some(
