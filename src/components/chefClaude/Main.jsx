@@ -5,10 +5,7 @@ import Ingredients from './Ingredients';
 export default function Form() {
   const [ingredients, setIngredients] = useState([]);
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    const ingredientInput = e.currentTarget
-    const formData = new FormData(ingredientInput);
+  function addIngredient(formData) {
     const ingredient = formData.get('ingredient');
 
     // Create a new ingredient object with a unique ID
@@ -18,15 +15,12 @@ export default function Form() {
     };
 
     setIngredients(prevIngredients => [...prevIngredients, newIngredient]);
-
-    // Reset the input field using the ref
-    ingredientInput.reset();
   }
 
   return (
     <section className="flex justify-center items-start w-full bg-gray-50 h-screen py-28 px-4">
       <section className="flex flex-col gap-8">
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:flex-row items-center">
+        <form action={addIngredient} className="flex flex-col gap-4 md:flex-row items-center">
           <input
             type="text"
             className="py-2 px-4 bg-white text-align-left rounded-md border-2
