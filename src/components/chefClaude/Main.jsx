@@ -18,6 +18,10 @@ export default function Form() {
     setIngredients(prevIngredients => [...prevIngredients, newIngredient]);
   }
 
+  function removeIngredient(id) {
+    setIngredients(prevIngredients => prevIngredients.filter(ingredient => ingredient.id !== id));
+  }
+
   return (
     <section className="flex justify-center items-start w-full bg-gray-50 h-screen py-28 px-4">
       <section className="flex flex-col gap-8">
@@ -37,7 +41,9 @@ export default function Form() {
             + Add ingredient
           </button>
         </form>
-        <Ingredients ingredients={ingredients} />
+        {
+          ingredients.length > 0 && <Ingredients removeIngredient={removeIngredient} ingredients={ingredients} />
+        }
       </section>
     </section>
   );
